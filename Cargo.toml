@@ -1,0 +1,6 @@
+[package]
+name = "rust-10"
+version = "0.1.0"
+authors = ["simbre1 <stijn.imbrechts+github@gmail.com>"]
+
+[dependencies]
