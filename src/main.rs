@@ -1,3 +1,6 @@
+extern crate image;
+
+use image::{ImageBuffer, Rgb};
 use std::cmp;
 use std::fs;
 
@@ -19,6 +22,17 @@ fn main() {
     let pvs: Vec<(Position, Velocity)> = contents.lines()
         .map(|line| parse(line))
         .collect();
+
+    let w: u32 = 10;
+    let h: u32 = 10;
+
+    let mut image = ImageBuffer::<Rgb<u8>,Vec<u8>>::new(w, h);
+
+    // set a central pixel to white
+    image.get_pixel_mut(5, 5).data = [255, 255, 255];
+
+    // write it out to a file
+    image.save("D:\\dev\\advent_of_code_2018\\rust-10\\images\\output.png").unwrap();
 }
 
 //position=<-39892,  -9859> velocity=< 4,  1>
@@ -41,4 +55,6 @@ fn parse(str: &str) -> (Position, Velocity) {
         }
     )
 }
+
+
 
